@@ -8,10 +8,13 @@ class RotatingPolygon(BaseModule.BaseModule):
 
     def __init__(self, screen: Surface):
         super().__init__(screen)
-        self.timer_interval = 0.1
+        self.timer_interval = 0.05
+        self.degree_change = 2
         self.color = (0, 148, 220)
+        self.line_size = 3
         self.position = (250, 150)
-        self.points = [(0, 30), (50, 0), (100, 30), (50, 100)]
+        #self.points = [(0, 30), (50, 50), (100, 30), (50, 100)]
+        self.points = [(0, 0), (24, 70), (50, 0), (24, 20)]
         self.points_modified = []
 
         self.degrees = 0
@@ -19,6 +22,7 @@ class RotatingPolygon(BaseModule.BaseModule):
         self.calculate()
 
     def calculate(self):
+        self.degrees = 0
         self.points_modified.clear()
         for i in range(len(self.points)):
             position = []
@@ -28,11 +32,10 @@ class RotatingPolygon(BaseModule.BaseModule):
             self.points_modified.append(position)
 
     def execute_timer(self):
-        self.degrees += 1
-        self.points_modified = rotate_polygon(self.points_modified, self.degrees)
+        self.points_modified = rotate_polygon(self.points_modified, self.degree_change)
 
     def draw(self):
-        pygame.draw.polygon(self._screen, self.color, self.points_modified, 4)
+        pygame.draw.polygon(self._screen, self.color, self.points_modified, self.line_size)
 
 
 
