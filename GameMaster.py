@@ -5,6 +5,7 @@ from local_modules.BaseModule import BaseModule
 from local_modules.MousePosition import MousePosition
 from local_modules.MovingGrid import MovingGrid
 from local_modules.RotatingPolygon import RotatingPolygon
+from local_modules.UpdateText import UpdateText
 from pygameFpsCounter.FpsCounterMax import FpsCounterMax
 
 
@@ -61,6 +62,14 @@ class GameMaster:
 
         rotating_polygon = RotatingPolygon(self.screen)
         self.all_modules.append(rotating_polygon)
+
+        update_text_rotation_degrees = UpdateText(self.screen)
+        update_text_rotation_degrees.color = rotating_polygon.color
+        update_text_rotation_degrees.font_size = 20
+        update_text_rotation_degrees.timer_interval = 0.25
+        update_text_rotation_degrees.position = (rotating_polygon.position[0], rotating_polygon.position[1] + rotating_polygon.get_max_height())
+        update_text_rotation_degrees.bind_object(rotating_polygon, 'get_degrees', True)
+        self.all_modules.append(update_text_rotation_degrees)
 
     def run(self):
         pygame.init()

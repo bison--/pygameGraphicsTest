@@ -57,7 +57,7 @@ class GameMaster:
 
     def run(self):
         pygame.init()
-        pygame.display.set_caption("Graphics Test")
+        pygame.display.set_caption("Graphics Test CyberGrid Demo")
 
         self.screen = pygame.display.set_mode((config.SCREEN_WIDTH, config.SCREEN_HEIGHT), pygame.RESIZABLE)
         clock = pygame.time.Clock()

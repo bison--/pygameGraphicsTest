@@ -25,6 +25,14 @@ class RotatingPolygon(BaseModule.BaseModule):
 
         self.calculate()
 
+    def get_max_height(self):
+        height = 0
+        for point in self.points:
+            if point[1] > height:
+                height = point[1]
+
+        return height
+
     def get_degrees(self):
         return abs(self.degrees) % 360
 
