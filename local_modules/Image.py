@@ -7,7 +7,6 @@ class Image(BaseModule.BaseModule):
 
     def __init__(self, screen: Surface, _image):
         super().__init__(screen)
-        self.color = (245, 101, 44)  # orange
         self.position = (0, 0)
 
         self.img = pygame.image.load(_image)
@@ -36,11 +35,9 @@ class Image(BaseModule.BaseModule):
         self.img_draw_rect = self.img.get_rect().copy()
 
         if self.center_width_rect is not None:
-            #config.SCREEN_WIDTH / 2 - imgRect.width / 2
             self.img_draw_rect.x = self.center_width_rect.width / 2 - self.img_draw_rect.width / 2
 
         if self.center_height_rect is not None:
-            #config.SCREEN_WIDTH / 2 - imgRect.width / 2
             self.img_draw_rect.y = self.center_width_rect.height / 2 - self.img_draw_rect.height / 2
 
     def draw(self):
