@@ -37,7 +37,7 @@ class GameMaster:
         self.all_modules.append(moving_grid)
 
         skyline_drawer = SkylineCreator(self.screen)
-        skyline_drawer.size = (screen_rect.width, skyline_drawer.size[1] + 100)
+        skyline_drawer.size = (screen_rect.width, skyline_drawer.size[1])
         skyline_drawer.calculate(True)
         self.all_modules.append(skyline_drawer)
 
