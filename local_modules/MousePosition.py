@@ -7,7 +7,7 @@ class MousePosition(BaseModule.BaseModule):
 
     def __init__(self, screen: Surface):
         super().__init__(screen)
-        self.timer_interval = 0.250
+        self.timer_interval = 0.050
         self.font_size = 50
         self.color = (245, 101, 44)  # orange
         self.position = (0, 10)

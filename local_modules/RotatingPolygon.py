@@ -15,7 +15,7 @@ class RotatingPolygon(BaseModule.BaseModule):
         self.timer_interval = 0.05
         self.degree_change = 2
         self.color = (0, 148, 220)
-        self.line_size = 3
+        self.line_size = 2
         self.position = (250, 150)
         # self.points = [(0, 30), (50, 50), (100, 30), (50, 100)]  # different shape
         self.points = [(0, 0), (24, 70), (50, 0), (24, 20)]
