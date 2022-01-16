@@ -2,6 +2,7 @@ import pygame
 from pygame.surface import Surface
 import config
 from local_modules.BaseModule import BaseModule
+from local_modules.BindTimer import BindTimer
 from local_modules.MousePosition import MousePosition
 from local_modules.MovingGrid import MovingGrid
 from local_modules.SkylineCreator import SkylineCreator
@@ -31,6 +32,11 @@ class GameMaster:
 
         skyline_drawer = SkylineCreator(self.screen)
         self.all_modules.append(skyline_drawer)
+
+        bind_window_timer = BindTimer(self.screen)
+        bind_window_timer.timer_interval = 1.2
+        bind_window_timer.bind_object(skyline_drawer, 'calculate_windows')
+        self.all_modules.append(bind_window_timer)
 
         text_scroller = TextScroller(self.screen, data.fakeFileNames.fakeFileNames)
         text_scroller.color = (38, 127, 0)

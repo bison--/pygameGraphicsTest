@@ -3,7 +3,7 @@ from pygame.surface import Surface
 from local_modules import BaseModule
 
 
-class UpdateText(BaseModule.BaseModule):
+class BindText(BaseModule.BaseModule):
 
     def __init__(self, screen: Surface):
         super().__init__(screen)

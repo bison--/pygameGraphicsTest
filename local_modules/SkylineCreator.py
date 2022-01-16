@@ -49,24 +49,34 @@ class SkylineCreator(BaseModule.BaseModule):
         while x_drawer < self.size[0]:
             x_drawer = self.create_building(x_drawer)
 
+        if self.add_windows:
+            self.calculate_windows()
+
     def create_building(self, x_offset):
         width = random.randint(int(self.size[0] / 30), int(self.size[0] / 20))
         height = random.randint(int(self.size[1] / 10), int(self.size[1] + self.size[1] / 10))
         building_rect = pygame.rect.Rect(x_offset, self.position[1] - height, width, height)
         self.skyline_buildings.append(building_rect)
 
-        if self.add_windows:
+        return x_offset + width
+
+    def calculate_windows(self):
+        self.building_windows.clear()
+
+        for building_rect in self.skyline_buildings:
+            width = building_rect.width
+            height = building_rect.height
+
             window_width = int(width / 10)
             window_height = int(height / 10)
 
-            for row in range(building_rect.y + 5, (building_rect.y + building_rect.height) - window_height, window_height + 5):
-                for col in range(building_rect.x + 5, (building_rect.x + building_rect.width) - window_width, window_width + 5):
+            for row in range(building_rect.y + 5, (building_rect.y + building_rect.height) - window_height,
+                             window_height + 5):
+                for col in range(building_rect.x + 5, (building_rect.x + building_rect.width) - window_width,
+                                 window_width + 5):
                     if self.window_probability >= random.randint(0, 100):
                         self.building_windows.append(
                             pygame.rect.Rect(col, row, window_width, window_height)
                         )
-
-        return x_offset + width
-
 
 
