@@ -3,6 +3,10 @@ from pygame.surface import Surface
 from local_modules import BaseModule
 from local_modules.Helper import rotate_polygon
 
+# resources:
+# https://ukdevguy.com/tutorial-on-how-to-draw-shapes-in-pygame/
+# https://www.examplefiles.net/cs/1435025
+
 
 class RotatingPolygon(BaseModule.BaseModule):
 
@@ -13,13 +17,16 @@ class RotatingPolygon(BaseModule.BaseModule):
         self.color = (0, 148, 220)
         self.line_size = 3
         self.position = (250, 150)
-        #self.points = [(0, 30), (50, 50), (100, 30), (50, 100)]
+        # self.points = [(0, 30), (50, 50), (100, 30), (50, 100)]  # different shape
         self.points = [(0, 0), (24, 70), (50, 0), (24, 20)]
         self.points_modified = []
 
         self.degrees = 0
 
         self.calculate()
+
+    def get_degrees(self):
+        return abs(self.degrees) % 360
 
     def calculate(self):
         self.degrees = 0
@@ -32,15 +39,8 @@ class RotatingPolygon(BaseModule.BaseModule):
             self.points_modified.append(position)
 
     def execute_timer(self):
+        self.degrees += self.degree_change
         self.points_modified = rotate_polygon(self.points_modified, self.degree_change)
 
     def draw(self):
         pygame.draw.polygon(self._screen, self.color, self.points_modified, self.line_size)
-
-
-
-#https://ukdevguy.com/tutorial-on-how-to-draw-shapes-in-pygame/
-#https://www.examplefiles.net/cs/1435025
-#points = [(350, 350), (400, 320), (460, 340), (410, 450)]
-#pygame.draw.polygon(game_window, (0,0,255), points, 4)
-

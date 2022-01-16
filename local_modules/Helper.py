@@ -6,7 +6,7 @@ def rotate_polygon(points, degrees):
     # https://stackoverflow.com/a/45511474
 
     theta = radians(degrees)  # Convert angle to radians
-    cosang, sinang = cos(theta), sin(theta)
+    cos_ang, sin_ang = cos(theta), sin(theta)
 
     #points = polygon.getPoints()
     # find center point of Polygon to use as pivot
@@ -18,8 +18,8 @@ def rotate_polygon(points, degrees):
     for p in points:
         x, y = p[0], p[1]
         tx, ty = x-cx, y-cy
-        new_x = (tx*cosang + ty*sinang) + cx
-        new_y = (-tx*sinang + ty*cosang) + cy
+        new_x = (tx*cos_ang + ty*sin_ang) + cx
+        new_y = (-tx*sin_ang + ty*cos_ang) + cy
         new_points.append((new_x, new_y))
 
     return new_points
