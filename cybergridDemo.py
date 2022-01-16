@@ -3,9 +3,11 @@ from pygame.surface import Surface
 import config
 from local_modules.BaseModule import BaseModule
 from local_modules.BindTimer import BindTimer
+from local_modules.Image import Image
 from local_modules.MousePosition import MousePosition
 from local_modules.MovingGrid import MovingGrid
 from local_modules.SkylineCreator import SkylineCreator
+from local_modules.TextScroller import TextScroller
 from pygameFpsCounter.FpsCounterMax import FpsCounterMax
 
 
@@ -19,8 +21,11 @@ class GameMaster:
         self.all_modules = []  # type: list[BaseModule]
 
     def import_modules(self):
-        from local_modules.TextScroller import TextScroller
         import data.fakeFileNames
+
+        sun = Image(self.screen, 'assets/images/synthwaveSun_small.png')
+        sun.set_center_width_rect(self.screen.get_rect())
+        self.all_modules.append(sun)
 
         moving_grid = MovingGrid(self.screen)
         moving_grid.position = (-400, config.SCREEN_HEIGHT - 200)
@@ -73,6 +78,10 @@ class GameMaster:
 
         self.import_modules()
 
+        #img = pygame.image.load('assets/images/synthwaveSun_small.png')
+        #imgRect = img.get_rect()
+        #imgRect.x = config.SCREEN_WIDTH / 2 - imgRect.width / 2
+
         while self.game_is_running:
             # limit frame speed to fps
             self.time_passed = clock.tick(9999)
@@ -94,12 +103,8 @@ class GameMaster:
             #    (3, 3, 3),
             #    pygame.rect.Rect(0, 0, config.SCREEN_WIDTH, 100)
             #)
-            img = pygame.image.load('assets/images/synthwaveSun_small.png')
-            imgRect = img.get_rect()
-            imgRect.x = config.SCREEN_WIDTH / 2 - imgRect.width / 2
-            self.screen.blit(img, imgRect)
 
-
+            #self.screen.blit(img, imgRect)
 
             for module in self.all_modules:
                 module.timer()
