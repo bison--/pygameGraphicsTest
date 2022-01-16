@@ -4,6 +4,7 @@ import config
 from local_modules.BaseModule import BaseModule
 from local_modules.MousePosition import MousePosition
 from local_modules.MovingGrid import MovingGrid
+from local_modules.RotatingPolygon import RotatingPolygon
 from pygameFpsCounter.FpsCounterMax import FpsCounterMax
 
 
@@ -57,6 +58,9 @@ class GameMaster:
         mouse_position.position = (config.SCREEN_WIDTH - 100, config.SCREEN_HEIGHT - 30)
         mouse_position.calculate()
         self.all_modules.append(mouse_position)
+
+        rotating_polygon = RotatingPolygon(self.screen)
+        self.all_modules.append(rotating_polygon)
 
     def run(self):
         pygame.init()
