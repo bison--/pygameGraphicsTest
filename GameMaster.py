@@ -21,9 +21,10 @@ class GameMaster:
     def import_modules(self):
         from local_modules.TextScroller import TextScroller
         import data.fakeFileNames
+        screen_rect = self.screen.get_rect()
 
         moving_grid = MovingGrid(self.screen)
-        moving_grid.position = (-130, config.SCREEN_HEIGHT - 240)
+        moving_grid.position = (-130, screen_rect.height - 240)
         moving_grid.size = (600, 240)
         moving_grid.timer_interval = 0.01
         moving_grid.calculate()
@@ -56,7 +57,7 @@ class GameMaster:
 
         mouse_position = MousePosition(self.screen)
         mouse_position.font_size = 30
-        mouse_position.position = (config.SCREEN_WIDTH - 100, config.SCREEN_HEIGHT - 30)
+        mouse_position.position = (screen_rect.width - 100, screen_rect.height - 30)
         mouse_position.calculate()
         self.all_modules.append(mouse_position)
 
@@ -95,6 +96,12 @@ class GameMaster:
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.game_is_running = False
+                    elif event.key == pygame.K_c:
+                        for module in self.all_modules:
+                            module.calculate()
+                    elif event.key == pygame.K_r:
+                        self.all_modules.clear()
+                        self.import_modules()
                     else:
                         for module in self.all_modules:
                             module.handle_input(event)

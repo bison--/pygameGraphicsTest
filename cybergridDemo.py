@@ -22,13 +22,14 @@ class GameMaster:
 
     def import_modules(self):
         import data.fakeFileNames
+        screen_rect = self.screen.get_rect()
 
         sun = Image(self.screen, 'assets/images/synthwaveSun_small.png')
         sun.set_center_width_rect(self.screen.get_rect())
         self.all_modules.append(sun)
 
         moving_grid = MovingGrid(self.screen)
-        moving_grid.position = (-400, config.SCREEN_HEIGHT - 200)
+        moving_grid.position = (-400, screen_rect.height - 200)
         moving_grid.size = (1600, 240)
         moving_grid.timer_interval = 0.01
         moving_grid.row_distance = 60
@@ -36,6 +37,8 @@ class GameMaster:
         self.all_modules.append(moving_grid)
 
         skyline_drawer = SkylineCreator(self.screen)
+        skyline_drawer.size = (screen_rect.width, skyline_drawer.size[1] + 100)
+        skyline_drawer.calculate(True)
         self.all_modules.append(skyline_drawer)
 
         bind_window_timer = BindTimer(self.screen)
@@ -62,7 +65,7 @@ class GameMaster:
 
         mouse_position = MousePosition(self.screen)
         mouse_position.font_size = 30
-        mouse_position.position = (config.SCREEN_WIDTH - 100, config.SCREEN_HEIGHT - 30)
+        mouse_position.position = (screen_rect.width - 100, screen_rect.height - 30)
         mouse_position.calculate()
         self.all_modules.append(mouse_position)
 
@@ -94,6 +97,12 @@ class GameMaster:
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.game_is_running = False
+                    elif event.key == pygame.K_c:
+                        for module in self.all_modules:
+                            module.calculate()
+                    elif event.key == pygame.K_r:
+                        self.all_modules.clear()
+                        self.import_modules()
                     else:
                         for module in self.all_modules:
                             module.handle_input(event)

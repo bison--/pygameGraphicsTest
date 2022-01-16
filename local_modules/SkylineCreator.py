@@ -44,7 +44,10 @@ class SkylineCreator(BaseModule.BaseModule):
                 rect
             )
 
-    def calculate(self):
+    def calculate(self, clear=False):
+        if clear:
+            self.skyline_buildings.clear()
+
         x_drawer = 0
         while x_drawer < self.size[0]:
             x_drawer = self.create_building(x_drawer)
