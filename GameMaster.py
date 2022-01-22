@@ -64,6 +64,13 @@ class GameMaster:
         rotating_polygon = RotatingPolygon(self.screen)
         self.all_modules.append(rotating_polygon)
 
+        rotating_polygon_hex = RotatingPolygon(self.screen)
+        rotating_polygon_hex.degree_change = -1
+        rotating_polygon_hex.points = [(40, 0), (80, 0), (120, 40), (80, 80), (40, 80), (0, 40)]
+        rotating_polygon_hex.position = (650, 120)
+        rotating_polygon_hex.calculate()
+        self.all_modules.append(rotating_polygon_hex)
+
         update_text_rotation_degrees = BindText(self.screen)
         update_text_rotation_degrees.color = rotating_polygon.color
         update_text_rotation_degrees.font_size = 20
