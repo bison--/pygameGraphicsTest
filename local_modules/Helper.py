@@ -1,6 +1,11 @@
 from math import radians, cos, sin
 
 
+def scale_between(unscaled_num, min_allowed, max_allowed, _min, _max):
+    # https://stackoverflow.com/a/31687097
+    return (max_allowed - min_allowed) * (unscaled_num - _min) / (_max - _min) + min_allowed
+
+
 def rotate_polygon(points, degrees):
     """ Rotate polygon the given angle about its center. """
     # https://stackoverflow.com/a/45511474

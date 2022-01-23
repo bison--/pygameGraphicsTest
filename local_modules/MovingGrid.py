@@ -8,7 +8,7 @@ class MovingGrid(BaseModule.BaseModule):
     def __init__(self, screen: Surface):
         super().__init__(screen)
         self.timer_interval = 0.1
-        self.primary_color = (255, 0, 220)
+        self.primary_color = (242, 34, 255)  # (255, 0, 220)
         self.position = (250, 150)
         self.size = (400, 240)
         self.row_distance = 24

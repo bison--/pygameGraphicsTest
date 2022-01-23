@@ -1,6 +1,7 @@
 import pygame
 from pygame.surface import Surface
 import config
+from local_modules.AudioVisualizer import AudioVisualizer
 from local_modules.BaseModule import BaseModule
 from local_modules.BindTimer import BindTimer
 from local_modules.DrawRectangle import DrawRectangle
@@ -109,6 +110,9 @@ class GameMaster:
         moving_grid.calculate()
         self.all_modules.append(moving_grid)
 
+        audio_visualizer = AudioVisualizer(self.screen, 'assets/music/2022-01-09_CyberCyberCyber_wip2.wav')
+        self.all_modules.append(audio_visualizer)
+
         import data.polygonMountains as pM
         mountains_filled = PolygonDraw(self.screen)
         mountains_filled.points = pM.data
@@ -156,6 +160,7 @@ class GameMaster:
 
         mouse_position = MousePosition(self.screen)
         mouse_position.font_size = 30
+        mouse_position.color = (255, 144, 31)
         mouse_position.position = (screen_rect.width - 100, screen_rect.height - 30)
         mouse_position.calculate()
         self.all_modules.append(mouse_position)

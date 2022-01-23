@@ -10,6 +10,12 @@ A synthwave scrolling grid with a skyline and a sun. I just wanted to make the g
 
 Run cybergridDemo.py for synthwave aesthetics.
 
+## AudioVisualizer
+
+The AudioVisualizer needs a .wav file with:
+* 16 bit
+* Stereo
+
 # Polygon Drawer
 
 A simple drawing tool for polygons https://github.com/bison--/polygonDrawer

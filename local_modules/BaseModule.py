@@ -8,10 +8,15 @@ class BaseModule:
         self._screen = screen
         self.timer_interval = 1.1
         self.__next_calculation_time = time.time()
+        self.time_last_execution = 0
+        self.time_last_execution_diff = 0
 
     def timer(self):
-        if self.__next_calculation_time <= time.time():
-            self.__next_calculation_time = time.time() + self.timer_interval
+        now = time.time()
+        if self.__next_calculation_time <= now:
+            self.__next_calculation_time = now + self.timer_interval
+            self.time_last_execution_diff = now - self.time_last_execution
+            self.time_last_execution = time.time()
             self.execute_timer()
 
     def calculate(self):
