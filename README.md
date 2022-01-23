@@ -6,9 +6,14 @@ Run main.py for the full-test experience.
 
 # cybergrid demo
 
-A synthwave scrolling grid with a skyline and a sun. I just wanted to make the grid, then it escalated a "bit"...
+A Synthwave scrolling grid with a skyline and a sun. I just wanted to make the grid, then it escalated a "bit"...
 
-Run cybergridDemo.py for synthwave aesthetics.
+Run `cybergridDemo.py` for Synthwave aesthetics.
+
+Watch the Video: https://youtu.be/vt9o9D5qE8M  
+
+[![Synthwave in action](https://img.youtube.com/vi/vt9o9D5qE8M/0.jpg)](https://youtu.be/vt9o9D5qE8M)
+
 
 ## AudioVisualizer
 
