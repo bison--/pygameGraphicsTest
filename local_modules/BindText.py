@@ -36,7 +36,7 @@ class BindText(BaseModule.BaseModule):
         if self._bind_value_function:
             self._text = str(getattr(self._bind_object, self._bind_value_name)())
         else:
-            self._text = str(self._bind_object[self._bind_value_name])
+            self._text = str(getattr(self._bind_object, self._bind_value_name))
 
     def draw(self):
         self._screen.blit(

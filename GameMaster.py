@@ -15,7 +15,7 @@ class GameMaster:
         self.screen = None  # type: Surface or None
         self.time_passed = 0
         self.game_is_running = True
-        self.max_fps = 999
+        self.max_fps = config.MAX_FPS
         self.all_modules = []  # type: list[BaseModule]
 
     def import_modules(self):
@@ -93,7 +93,7 @@ class GameMaster:
 
         while self.game_is_running:
             # limit frame speed to fps
-            self.time_passed = clock.tick(9999)
+            self.time_passed = clock.tick(self.max_fps)
 
             self.screen.fill((45, 45, 45))
 
