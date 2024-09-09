@@ -19,8 +19,7 @@ class RotatingPolygon(BaseModule.BaseModule, ABC):
         self.color = (0, 148, 220)
         self.line_size = 2
         self.position = (250, 150)
-        # self.points = [(0, 30), (50, 50), (100, 30), (50, 100)]  # different shape
-        self.points = [(0, 0), (24, 70), (50, 0), (24, 20)]
+        self.points = [(0, 0), (24, 70), (50, 0), (24, 20)]  # spaceship shape
         self.points_modified = []
 
         self.degrees = 0

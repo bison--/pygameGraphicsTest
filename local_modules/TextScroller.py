@@ -49,7 +49,7 @@ class TextScroller(BaseModule.BaseModule, ABC):
         index_overflow = 0
         draw_position = 0
         draw_index = self.index
-        for i in range(self.text_max_lines):
+        for _ in range(self.text_max_lines):
             if draw_index >= len(self.text_lines):
                 index_overflow += len(self.text_lines) - 1
 

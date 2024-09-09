@@ -10,7 +10,6 @@ class SkylineCreator(BaseModule.BaseModule, ABC):
 
     def __init__(self, screen: Surface):
         super().__init__(screen)
-        #self.timer_interval = 0.1
         self.primary_color = (20, 7, 61)
         self.window_color = (248, 154, 25)
         self.position = (0, 400)
@@ -75,13 +74,11 @@ class SkylineCreator(BaseModule.BaseModule, ABC):
             window_width = int(width / 10)
             window_height = int(height / 10)
 
-            for row in range(building_rect.y + 5, (building_rect.y + building_rect.height) - window_height,
-                             window_height + 5):
-                for col in range(building_rect.x + 5, (building_rect.x + building_rect.width) - window_width,
-                                 window_width + 5):
+            row_height = (building_rect.y + building_rect.height) - window_height
+            col_height = (building_rect.x + building_rect.width) - window_width
+            for row in range(building_rect.y + 5, row_height, window_height + 5):
+                for col in range(building_rect.x + 5, col_height, window_width + 5):
                     if self.window_probability >= random.randint(0, 100):
                         self.building_windows.append(
                             pygame.rect.Rect(col, row, window_width, window_height)
                         )
-
-

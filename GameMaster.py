@@ -1,5 +1,6 @@
 import pygame
 from pygame.surface import Surface
+
 import config
 from local_modules.BaseModule import BaseModule
 from local_modules.MousePosition import MousePosition

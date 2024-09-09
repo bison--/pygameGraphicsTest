@@ -37,6 +37,7 @@ class AudioVisualizer(BaseModule.BaseModule, ABC):
             self.frame_rate = self.wave_file.getframerate()
             self.frames = self.wave_file.getnframes()
             self.has_error = False
+
         except Exception as ex:
             print('AudioVisualizer', ex)
             self.frame_rate = 0
@@ -49,6 +50,7 @@ class AudioVisualizer(BaseModule.BaseModule, ABC):
     def execute_timer(self):
         if self.has_error:
             return
+
         # window size / sample rate
         frames_to_sample = self.time_last_execution_diff / self.frame_rate
 

@@ -1,6 +1,5 @@
 from abc import ABC
 
-import pygame
 from pygame.surface import Surface
 from local_modules import BaseModule
 

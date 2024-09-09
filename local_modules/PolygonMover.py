@@ -1,10 +1,7 @@
 from abc import ABC
 
-import pygame
 from pygame.surface import Surface
 from local_modules import BaseModule
-from local_modules.Helper import rotate_polygon
-
 
 # resources:
 # https://ukdevguy.com/tutorial-on-how-to-draw-shapes-in-pygame/
@@ -40,5 +37,3 @@ class PolygonMover(BaseModule.BaseModule, ABC):
 
         self.polygon.position = tuple(pos)
         self.polygon.calculate()
-
-
