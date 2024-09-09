@@ -1,3 +1,5 @@
+from abc import ABC
+
 import pygame
 from pygame.surface import Surface
 from local_modules import BaseModule
@@ -8,7 +10,7 @@ from local_modules.Helper import rotate_polygon
 # https://www.examplefiles.net/cs/1435025
 
 
-class RotatingPolygon(BaseModule.BaseModule):
+class RotatingPolygon(BaseModule.BaseModule, ABC):
 
     def __init__(self, screen: Surface):
         super().__init__(screen)

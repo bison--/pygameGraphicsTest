@@ -3,12 +3,14 @@
 # https://fairyonice.github.io/implement-the-spectrogram-from-scratch-in-python.html
 import struct
 import wave
+from abc import ABC
+
 import pygame
 from pygame.surface import Surface
 from local_modules import BaseModule, Helper
 
 
-class AudioVisualizer(BaseModule.BaseModule):
+class AudioVisualizer(BaseModule.BaseModule, ABC):
 
     def __init__(self, screen: Surface, audio_file):
         super().__init__(screen)
@@ -49,7 +51,6 @@ class AudioVisualizer(BaseModule.BaseModule):
             return
         # window size / sample rate
         frames_to_sample = self.time_last_execution_diff / self.frame_rate
-        #print(frames_to_sample)
 
         rect = self._screen.get_rect()
         distance_float = frames_to_sample / rect.width
@@ -71,12 +72,12 @@ class AudioVisualizer(BaseModule.BaseModule):
                 break
 
             # https://docs.python.org/3/library/struct.html#format-characters
-            #data = struct.unpack("<2H", wave_data)
+            # data = struct.unpack("<2H", wave_data)
             data = struct.unpack("<2h", wave_data)
 
             data = (
-                #Helper.scale_between(data[0], 0, self.size[1], 0, 65535),
-                #Helper.scale_between(data[1], 0, self.size[1], 0, 65535)
+                # Helper.scale_between(data[0], 0, self.size[1], 0, 65535),
+                # Helper.scale_between(data[1], 0, self.size[1], 0, 65535)
                 Helper.scale_between(data[0], 0, self.size[1], 0, 32767),
                 Helper.scale_between(data[1], 0, self.size[1], 0, 32767)
             )

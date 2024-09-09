@@ -1,10 +1,12 @@
+from abc import ABC
+
 import pygame
 from pygame.surface import Surface
 from local_modules import BaseModule
 import random
 
 
-class SkylineCreator(BaseModule.BaseModule):
+class SkylineCreator(BaseModule.BaseModule, ABC):
 
     def __init__(self, screen: Surface):
         super().__init__(screen)

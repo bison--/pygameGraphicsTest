@@ -1,9 +1,11 @@
+from abc import ABC
+
 import pygame
 from pygame.surface import Surface
 from local_modules import BaseModule
 
 
-class DrawRectangle(BaseModule.BaseModule):
+class DrawRectangle(BaseModule.BaseModule, ABC):
 
     def __init__(self, screen: Surface, x, y, width, height, color=(12, 34, 56)):
         super().__init__(screen)

@@ -1,4 +1,6 @@
 import time
+from abc import abstractmethod
+
 from pygame.surface import Surface
 
 
@@ -19,14 +21,18 @@ class BaseModule:
             self.time_last_execution = time.time()
             self.execute_timer()
 
+    @abstractmethod
     def calculate(self):
         pass
 
+    @abstractmethod
     def execute_timer(self):
         pass
 
+    @abstractmethod
     def draw(self):
         pass
 
+    @abstractmethod
     def handle_input(self, event):
         pass

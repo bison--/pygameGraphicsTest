@@ -1,9 +1,11 @@
+from abc import ABC
+
 import pygame
 from pygame.surface import Surface
 from local_modules import BaseModule
 
 
-class BindTimer(BaseModule.BaseModule):
+class BindTimer(BaseModule.BaseModule, ABC):
 
     def __init__(self, screen: Surface):
         super().__init__(screen)

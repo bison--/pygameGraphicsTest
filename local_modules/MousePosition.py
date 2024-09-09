@@ -1,9 +1,11 @@
+from abc import ABC
+
 import pygame
 from pygame.surface import Surface
 from local_modules import BaseModule
 
 
-class MousePosition(BaseModule.BaseModule):
+class MousePosition(BaseModule.BaseModule, ABC):
 
     def __init__(self, screen: Surface):
         super().__init__(screen)
